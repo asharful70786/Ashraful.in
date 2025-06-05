@@ -1,13 +1,15 @@
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
-//ebft gmlc lyyc rsdz
+dotenv.config();
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: "ashrafulmomin2@gmil.com",
-    pass: "ebftgmlclyycrsdz",
+    user: process.env.NODE_MAILER_USER,
+    pass: process.env.NODE_MAILER_PASS,
   },
 });
 
@@ -18,12 +20,10 @@ async function sendEmail(email, name, subject, message) {
     from: '"ashraful" <ashrafulmomin2@gmil.com>',
     to: "ashrafulmomin2@gmil.com",
     subject: subject,
-    text: message + " " + name + "",
-
+    text: message + " " + name + " " + email,
   });
 
   console.log("Message sent:", info.messageId);
-
 
 }
 

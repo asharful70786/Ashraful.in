@@ -1,4 +1,4 @@
-import User from "../model/userModel";
+import User from "../model/userModel.js";
 
 async function checkAuth() {
   const { sid } = req.cookies;

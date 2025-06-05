@@ -11,8 +11,9 @@ import multer from 'multer';
 import path from 'path';
 import upload from './middleWare/multterMiddleWare.js';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// Handle __dirname in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
