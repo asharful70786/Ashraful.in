@@ -160,7 +160,7 @@ app.post('/login-admin', async (req, res) => {
       httpOnly: true,
       signed: true,
       maxAge: 24 * 60 * 60 * 1000,
-      secure: true
+      secure: false
     });
 
     res.status(200).json({ message: 'Login successful' });
@@ -223,6 +223,28 @@ app.post("/project", checkAuth, async (req, res) => {
     res.status(500).json({ message: "Error creating project" });
   }
 });
+
+// Update a project
+app.patch("/project-update/:id", checkAuth, async (req, res) => {
+  const { id } = req.params;
+  const { title, description, image } = req.body;
+  try {
+    const project = await Project.findByIdAndUpdate(id, {
+      title,
+      description,
+      image,
+    }, { new: true });
+    res.status(200).json(project);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating project" });
+  }
+});
+
+app.get('/check-auth', checkAuth, (req, res) => {
+  res.status(200).json({ message: 'Authenticated' });
+});
+
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
