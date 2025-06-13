@@ -10,6 +10,8 @@ import About from './pages/About';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import PrivateRoute from './utils/PrivateRoute';
+import AddReview from "./pages/AddReview";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -24,6 +26,7 @@ export default function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/add-review" element={<AddReview />} />
           <Route path="/admin" element={
             <PrivateRoute>
               <AdminDashboard />
@@ -31,6 +34,7 @@ export default function App() {
           }/>
         </Routes>
       </div>
+      <Footer/>
     </div>
   );
 }

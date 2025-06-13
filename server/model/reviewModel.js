@@ -7,11 +7,11 @@ const reviewSchema = new mongoose.Schema({
   },
   picture: {
     type: String,
-    default: 'https://tse3.mm.bing.net/th?id=OIP.3IsXMskZyheEWqtE3Dr7JwHaGe&pid=Api&P=0&h=180',
+    default: 'https://tse1.mm.bing.net/th?id=OIP.52T8HHBWh6b0dwrG6tSpVQHaFe&pid=Api&P=0&h=180',
   },
   rating: {
     type: Number,
-    default: 3,
+    default: 4,
   },
   comment: {
     type: String,

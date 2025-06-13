@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 
 const skillSchema = new mongoose.Schema({
-  title: {
+  category: {
     type: String,
-    required: true,
+    required: true
   },
-  description: {
+  icon: {
     type: String,
-    required: true,
+    required: true
   },
-  image: {
-    type: String,
-    default: "https://tse1.mm.bing.net/th?id=OIP.FiIduLgaAGVKIVZjLzQxlwHaEK&pid=Api&P=0&h=180",
-  },
+  skills: {
+    type: [String],
+    required: true
+  }
 });
 
 const Skill = mongoose.model("Skill", skillSchema);

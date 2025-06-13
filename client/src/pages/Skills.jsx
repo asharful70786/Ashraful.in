@@ -5,7 +5,7 @@ export default function Skills() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/skills')
+    fetch('http://localhost:3000/skills') 
       .then(res => res.json())
       .then(data => setSkills(data))
       .catch(err => console.error(err));

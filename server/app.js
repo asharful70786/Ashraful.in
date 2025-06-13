@@ -49,12 +49,12 @@ app.get('/skills', async (req, res) => {
   }
 });
 
+
 // Post a skill with image
-app.post('/skill-post', checkAuth, upload.single('image'), async (req, res) => {
-  const { title, description } = req.body;
-  const image = `/uploads/${req.file.filename}`;
+app.post('/skill-post', async (req, res) => {
+  const { category, icon, skills } = req.body;
   try {
-    const skill = await Skill.create({ title, description, image });
+    const skill = await Skill.create({ category, icon, skills });
     res.status(200).json(skill);
   } catch (error) {
     console.error(error);
@@ -65,19 +65,32 @@ app.post('/skill-post', checkAuth, upload.single('image'), async (req, res) => {
 // Update skill
 app.patch('/skill-update/:id', checkAuth, async (req, res) => {
   const { id } = req.params;
-  const { title, description, image } = req.body;
+  const { category, icon, skills } = req.body;
   try {
-    const skill = await Skill.findByIdAndUpdate(id, {
-      title,
-      description,
-      image,
-    }, { new: true });
+    const skill = await Skill.findByIdAndUpdate(
+      id,
+      { category, icon, skills },
+      { new: true }
+    );
     res.status(200).json(skill);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error updating skill' });
   }
 });
+
+// Delete skill
+app.delete('/skill-delete/:id', checkAuth, async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Skill.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Skill deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error deleting skill' });
+  }
+});
+
 
 // ========== Review Routes ==========
 
@@ -93,19 +106,26 @@ app.get('/review', async (req, res) => {
 });
 
 // Post a review (hardcoded image)
-app.post('/review-post', checkAuth, async (req, res) => {
+app.post('/review-post', upload.single('picture'), async (req, res) => {
   const { name, rating, comment } = req.body;
-  const imageUrl = "https://tse3.mm.bing.net/th?id=OIP.hAsejLTrxIbqGc6JCsdNCwHaEK&pid=Api&P=0&h=180";
+  // Save only relative public path in DB
+ const imagePath = `/uploads/${req.file.filename}`; 
+
   try {
     const review = await Review.create({
       name,
-      picture: imageUrl,
+      picture: imagePath,
       rating,
       comment,
     });
     res.status(200).json(review);
   } catch (error) {
     console.error(error);
+    if (req.file) {
+      fs.unlink(req.file.path, (err) => {
+        if (err) console.error('Error deleting uploaded file:', err);
+      });
+    }
     res.status(500).json({ message: 'Error creating review' });
   }
 });

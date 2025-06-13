@@ -2,8 +2,7 @@ import User from "../model/userModel.js";
 
 async function checkAuth(req, res, next) {
   const { sid } = req.signedCookies;
-  console.log("sid", sid);
-  if (!sid) {
+   if (!sid) {
     return res.status(403).json({ message: "Unauthorized" });
   }
   try {
