@@ -12,6 +12,8 @@ import path from 'path';
 import upload from './middleWare/multterMiddleWare.js';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import Project from './model/projectModel.js';
+import bcrypt from 'bcrypt';
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +35,8 @@ app.use(cors({
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/resume', express.static(path.join(__dirname, 'public')));
+
+
 
 
 app.get('/skills', async (req, res) => {
@@ -136,16 +140,18 @@ app.post("/contact-email", async (req, res) => {
   }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/login-admin', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(403).json({ message: 'Invalid email or password' });
     }
-    if (user.password !== password) {
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
       return res.status(403).json({ message: 'Invalid email or password' });
     }
+
     if (user.role !== "admin") {
       return res.status(401).json({ message: 'Unauthorized, only admin can login' });
     }
@@ -154,7 +160,7 @@ app.post('/login', async (req, res) => {
       httpOnly: true,
       signed: true,
       maxAge: 24 * 60 * 60 * 1000,
-      secure: false, // true in production
+      secure: true
     });
 
     res.status(200).json({ message: 'Login successful' });
@@ -164,7 +170,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.post('/logout', (req, res) => {
+app.post('/logout-admin', (req, res) => {
   try {
     res.clearCookie('sid');
     res.status(200).json({ message: 'Logout successful' });
@@ -186,10 +192,37 @@ app.get("/resume-file", async (req, res) => {
       return res.sendFile(resumePath);
     }
   } catch (error) {
-    return res.status(500).json({ message: "Error sending resume" });
+    return res.status(500).json({ message: "Error sending resume file", error });
   }
 });
 
+// ========== Project Routes ==========
+// Get all projects
+app.get("/projects", async (req, res) => {
+  try {
+    const projects = await Project.find();
+    res.status(200).json(projects);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching projects" });
+  }
+});
+
+// Post a project
+app.post("/project", checkAuth, async (req, res) => {
+  const { title, description, image } = req.body;
+  try {
+    const project = await Project.create({
+      title,
+      description,
+      image,
+    });
+    res.status(200).json(project);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error creating project" });
+  }
+});
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');

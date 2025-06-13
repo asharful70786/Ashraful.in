@@ -3,7 +3,7 @@ import User from "../model/userModel.js";
 async function checkAuth() {
   const { sid } = req.cookies;
   if (!sid) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(403).json({ message: "Unauthorized" });
   }
   try {
     const user = await User.findOne({ _id: sid });
