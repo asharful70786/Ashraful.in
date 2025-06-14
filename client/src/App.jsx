@@ -14,27 +14,32 @@ import AddReview from "./pages/AddReview";
 import Footer from "./components/Footer";
 import NotFoundPage from "./pages/NotFoundPage";
 
+
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/add-review" element={<AddReview />} />
-          <Route path="/admin" element={
-            <PrivateRoute>
-              <AdminDashboard />
-            </PrivateRoute>
-          }/>
-        </Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/projects" element={<Projects />} />
+    <Route path="/skills" element={<Skills />} />
+    <Route path="/reviews" element={<Reviews />} />
+    <Route path="/contact" element={<ContactUs />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/login" element={<Login />} />
+    
+    <Route path="/add-review" element={<AddReview />} />
+    <Route
+      path="/admin"
+      element={
+        <PrivateRoute>
+          <AdminDashboard />
+        </PrivateRoute>
+      }
+    />
+    <Route path="*" element={<NotFoundPage />} />
+  </Routes>
       </div>
       <Footer/>
     </div>
