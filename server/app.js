@@ -109,7 +109,7 @@ app.get('/review', async (req, res) => {
 app.post('/review-post', upload.single('picture'), async (req, res) => {
   const { name, rating, comment } = req.body;
   // Save only relative public path in DB
- const imagePath = `/uploads/${req.file.filename}`; 
+  const imagePath = `/uploads/${req.file.filename}`;
 
   try {
     const review = await Review.create({
@@ -229,7 +229,7 @@ app.get("/projects", async (req, res) => {
 });
 
 // Post a project
-app.post("/project", checkAuth, async (req, res) => {
+app.post("/project",  async (req, res) => {
   const { title, description, image } = req.body;
   try {
     const project = await Project.create({
@@ -263,6 +263,20 @@ app.patch("/project-update/:id", checkAuth, async (req, res) => {
 
 app.get('/check-auth', checkAuth, (req, res) => {
   res.status(200).json({ message: 'Authenticated' });
+});
+
+app.post("/subscribe-email", async (req, res) => {
+  let { email, name, subject, message } = req.body;
+  try {
+    name = email.split('@')[0];
+    subject = "SubScribe  NewsLetter";
+    message = `Hello ${name},\n\nThank you for subscribing to my portfolio. I will update you with the latest news and updates.`;
+    await sendEmail(email, name, subject, message);
+    res.status(200).json({ message: message });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error sending email" });
+  }
 });
 
 
