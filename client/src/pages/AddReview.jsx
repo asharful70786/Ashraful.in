@@ -46,7 +46,7 @@ function AddReview() {
         formDataToSend.append('picture', picture);
       }
 
-      const response = await fetch('http://localhost:3000/review-post', {
+      const response = await fetch('https://node.ashraful.in/review-post', {
         method: 'POST',
         body: formDataToSend,
         // Don't set Content-Type header - the browser will set it automatically with the correct boundary

@@ -38,7 +38,7 @@ export default function ContactUs() {
     setLoading(true);
     setSuccess('');
     try {
-    await fetch('http://localhost:3000/contact-email', {
+    await fetch('https://node.ashraful.in/contact-email', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

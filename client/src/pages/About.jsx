@@ -40,7 +40,7 @@ export default function About() {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
                 <img
-                  src="https://www.ashraful.in/me.jpg"
+                  src="./meProfile.jpg"
                   alt="Ashraful Momin"
                   className="relative w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-slate-800 shadow-2xl"
                 />

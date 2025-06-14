@@ -27,9 +27,14 @@ app.use(cookieParser("Ashraful secret key"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const allowedOrigins = [
+  'https://ashraful.in',
+  'https://www.ashraful.in'
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true, 
 }));
 
 
@@ -51,7 +56,7 @@ app.get('/skills', async (req, res) => {
 
 
 // Post a skill with image
-app.post('/skill-post', async (req, res) => {
+app.post('/skill-post', checkAuth ,  async (req, res) => {
   const { category, icon, skills } = req.body;
   try {
     const skill = await Skill.create({ category, icon, skills });
@@ -229,7 +234,7 @@ app.get("/projects", async (req, res) => {
 });
 
 // Post a project
-app.post("/project",  async (req, res) => {
+app.post("/project",checkAuth ,  async (req, res) => {
   const { title, description, image } = req.body;
   try {
     const project = await Project.create({

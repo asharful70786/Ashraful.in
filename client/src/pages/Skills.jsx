@@ -5,7 +5,10 @@ export default function Skills() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/skills') 
+
+    
+    fetch('https://node.ashraful.in/skills') 
+
       .then(res => res.json())
       .then(data => setSkills(data))
       .catch(err => console.error(err));

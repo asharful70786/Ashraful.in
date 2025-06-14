@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuth = async () => {
     try {
-      const res = await fetch("http://localhost:3000/check-auth", {
+      const res = await fetch("https://node.ashraful.in/check-auth", {
         credentials: "include",
       });
 
