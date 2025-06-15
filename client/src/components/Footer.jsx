@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaCode, FaCheckCircle, Fa
 import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 import { HiArrowUp } from 'react-icons/hi';
 import { motion } from 'framer-motion';
+import { Link as ScrollLink } from 'react-scroll';
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -48,10 +49,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", to: "hero" },
+    { name: "About", to: "about" },
+    { name: "Projects", to: "projects" },
+    { name: "Contact", to: "contact" },
   ];
 
   return (
@@ -82,15 +83,21 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Quick Links (Scroll Enabled) */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
             <h4 className="text-xl font-semibold text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-slate-300 hover:text-cyan-400 font-light transition-all duration-300 hover:translate-x-2 inline-block">
+                  <ScrollLink 
+                    to={link.to} 
+                    smooth={true} 
+                    duration={500} 
+                    offset={-80}
+                    className="cursor-pointer text-slate-300 hover:text-cyan-400 font-light transition-all duration-300 hover:translate-x-2 inline-block"
+                  >
                     {link.name}
-                  </a>
+                  </ScrollLink>
                 </li>
               ))}
             </ul>
