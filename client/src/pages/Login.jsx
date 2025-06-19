@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('https://node.ashraful.in/login-admin', {
+      const res = await fetch('https://backend.ashraful.in/login-admin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

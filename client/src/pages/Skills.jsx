@@ -7,7 +7,7 @@ export default function Skills() {
   useEffect(() => {
 
     
-    fetch('https://node.ashraful.in/skills') 
+    fetch('https://backend.ashraful.in/skills') 
 
       .then(res => res.json())
       .then(data => setSkills(data))

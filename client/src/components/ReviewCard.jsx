@@ -9,7 +9,7 @@ export default function ReviewCard({ review }) {
         {/* Avatar */}
         <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
           <img 
-            src={`https://node.ashraful.in${review.picture}`} 
+            src={`https://backend.ashraful.in${review.picture}`} 
             alt={review.name}  
             className="w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg"
           />

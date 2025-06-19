@@ -9,7 +9,7 @@ export default function Reviews() {
   const slideInterval = useRef();
 
   useEffect(() => {
-    fetch('https://node.ashraful.in/review')
+    fetch('https://backend.ashraful.in/review')
       .then(res => res.json())
       .then(data => setReviews(data))
       .catch(err => console.error(err));

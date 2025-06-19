@@ -5,7 +5,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch('https://node.ashraful.in/projects')
+    fetch('https://backend.ashraful.in/projects')
       .then(res => res.json())
       .then(data => setProjects(data))
       .catch(err => console.error(err));

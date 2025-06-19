@@ -46,7 +46,7 @@ function AddReview() {
         formDataToSend.append('picture', picture);
       }
 
-      const response = await fetch('https://node.ashraful.in/review-post', {
+      const response = await fetch('https://backend.ashraful.in/review-post', {
         method: 'POST',
         body: formDataToSend,
       });

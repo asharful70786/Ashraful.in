@@ -16,13 +16,13 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchProjects = async () => {
-    const res = await fetch('https://node.ashraful.in/projects');
+    const res = await fetch('https://backend.ashraful.in/projects');
     const data = await res.json();
     setProjects(data);
   };
 
   const fetchSkills = async () => {
-    const res = await fetch('https://node.ashraful.in/skills');
+    const res = await fetch('https://backend.ashraful.in/skills');
     const data = await res.json();
     setSkills(data);
   };
@@ -30,7 +30,7 @@ export default function AdminDashboard() {
   // Project upload
   const handleProjectSubmit = async e => {
     e.preventDefault();
-    const res = await fetch('https://node.ashraful.in/project', {
+    const res = await fetch('https://backend.ashraful.in/project', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
     formData.append('description', skillData.description);
     formData.append('image', skillData.image);
 
-    const res = await fetch('https://node.ashraful.in/skill-post', {
+    const res = await fetch('https://backend.ashraful.in/skill-post', {
       method: 'POST',
       credentials: 'include',
       body: formData
@@ -69,7 +69,7 @@ export default function AdminDashboard() {
     const updatedDescription = prompt("Enter new description:");
     const updatedImage = prompt("Enter new image url:");
 
-    const res = await fetch(`https://node.ashraful.in/project-update/${id}`, {
+    const res = await fetch(`https://backend.ashraful.in/project-update/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
     const updatedDescription = prompt("Enter new description:");
     const updatedImage = prompt("Enter image url or leave blank to keep same:");
 
-    const res = await fetch(`https://node.ashraful.in/skill-update/${id}`, {
+    const res = await fetch(`https://backend.ashraful.in/skill-update/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -102,7 +102,7 @@ export default function AdminDashboard() {
   };
 
   const handleLogout = async () => {
-    await fetch('https://node.ashraful.in/logout-admin', { method: 'POST', credentials: 'include' });
+    await fetch('https://backend.ashraful.in/logout-admin', { method: 'POST', credentials: 'include' });
     navigate('/');
   };
 
