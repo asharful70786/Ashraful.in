@@ -34,7 +34,7 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: allowedOrigins,
-  credentials: true, 
+  credentials: true,
 }));
 
 
@@ -42,7 +42,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 app.use('/resume', express.static(path.join(__dirname, 'public')));
 
 
-
+app.get("/", (req, res) => {
+  res.send("vercel deploy");
+});
 
 app.get('/skills', async (req, res) => {
   try {
@@ -56,7 +58,7 @@ app.get('/skills', async (req, res) => {
 
 
 // Post a skill with image
-app.post('/skill-post', checkAuth ,  async (req, res) => {
+app.post('/skill-post', checkAuth, async (req, res) => {
   const { category, icon, skills } = req.body;
   try {
     const skill = await Skill.create({ category, icon, skills });
@@ -234,7 +236,7 @@ app.get("/projects", async (req, res) => {
 });
 
 // Post a project
-app.post("/project",checkAuth ,  async (req, res) => {
+app.post("/project", checkAuth, async (req, res) => {
   const { title, description, image } = req.body;
   try {
     const project = await Project.create({
