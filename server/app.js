@@ -167,35 +167,35 @@ app.post("/contact-email", async (req, res) => {
   }
 });
 
-app.post('/login-admin', async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(403).json({ message: 'Invalid email or password' });
-    }
-    const match = await bcrypt.compare(password, user.password);
-    if (!match) {
-      return res.status(403).json({ message: 'Invalid email or password' });
-    }
+// app.post('/login-admin', async (req, res) => {
+//   const { email, password } = req.body;
+//   try {
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(403).json({ message: 'Invalid email or password' });
+//     }
+//     const match = await bcrypt.compare(password, user.password);
+//     if (!match) {
+//       return res.status(403).json({ message: 'Invalid email or password' });
+//     }
 
-    if (user.role !== "admin") {
-      return res.status(401).json({ message: 'Unauthorized, only admin can login' });
-    }
+//     if (user.role !== "admin") {
+//       return res.status(401).json({ message: 'Unauthorized, only admin can login' });
+//     }
 
-    res.cookie('sid', user.id, {
-      httpOnly: true,
-      signed: true,
-      maxAge: 24 * 60 * 60 * 1000,
-      secure: false
-    });
+//     res.cookie('sid', user.id, {
+//       httpOnly: true,
+//       signed: true,
+//       maxAge: 24 * 60 * 60 * 1000,
+//       secure: false
+//     });
 
-    res.status(200).json({ message: 'Login successful' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error logging in' });
-  }
-});
+//     res.status(200).json({ message: 'Login successful' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Error logging in' });
+//   }
+// });
 
 app.post('/logout-admin', (req, res) => {
   try {
