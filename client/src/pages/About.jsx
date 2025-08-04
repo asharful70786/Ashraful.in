@@ -5,7 +5,7 @@ import { HiSparkles, HiLightBulb, HiHeart } from 'react-icons/hi';
 export default function About() {
   const achievements = [
     { number: "50+", label: "Projects Completed", icon: <HiSparkles className="text-yellow-400" size={24} /> },
-    { number: "1.6", label: "Years Experience", icon: <HiLightBulb className="text-blue-400" size={24} /> },
+    { number: "2+", label: "Years Experience", icon: <HiLightBulb className="text-blue-400" size={24} /> },
     { number: "100%", label: "Client Satisfaction", icon: <HiHeart className="text-red-400" size={24} /> },
     { number: "24/7", label: "Learning Mode", icon: <FaBook className="text-green-400" size={24} /> },
   ];
