@@ -90,7 +90,7 @@ export default function About() {
                 <div className="relative mb-8">
                   <div className="relative mx-auto w-48 h-48">
                     <motion.img
-                      src="./meProfile.jpg"
+                      src="./ashrfaul_momin.jpg"
                       alt="Ashraful Momin"
                       className="rounded-2xl object-cover w-full h-full border-4 border-slate-700/50 shadow-2xl"
                       whileHover={{ scale: 1.05 }}
@@ -315,7 +315,7 @@ export default function About() {
                 </motion.a>
 
                 <motion.a
-                  href="/md_Ashraful_momin.pdf"
+                  href="/ashraful_viralGut.webp"
                   download
                   className="group flex-1 bg-slate-800/50 backdrop-blur-sm border border-cyan-500/30 text-slate-300 font-semibold py-4 px-6 rounded-xl hover:bg-slate-700/50 hover:border-cyan-400 transition-all duration-300 flex items-center justify-center gap-3"
                   whileHover={{ scale: 1.02 }}
