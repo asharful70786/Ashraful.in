@@ -5,6 +5,7 @@ import ContactUs from "./ContactUs";
 import Skills from './Skills';
 import Reviews from './Reviews';
 import ExperienceSection from './ExperienceSection';
+import Offer from '../components/Offer';
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <div id="skills"><Skills /></div>
       <div id="reviews"><Reviews /></div>
       <div id="contact"><ContactUs /></div>
+      <Offer />
     </div>
   );
 }
