@@ -4,11 +4,13 @@ import Projects from './Projects';
 import ContactUs from "./ContactUs";
 import Skills from './Skills';
 import Reviews from './Reviews';
+import ExperienceSection from './ExperienceSection';
 
 function Home() {
   return (
     <div>
       <div id="about"><About /></div>
+      <div><ExperienceSection/></div>
       <div id="projects"><Projects /></div>
       <div id="skills"><Skills /></div>
       <div id="reviews"><Reviews /></div>

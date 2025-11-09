@@ -156,7 +156,7 @@ export default function About() {
                     { icon: FaGithub, href: "https://github.com/asharful70786", color: "hover:bg-slate-700" },
                     { icon: FaLinkedin, href: "https://www.linkedin.com/in/ashraful-momin/", color: "hover:bg-blue-500/20" },
                     { icon: FaInstagram, href: "https://www.instagram.com/codercamp2024", color: "hover:bg-pink-500/20" },
-                    { icon: FaEnvelope, href: "mailto:ashrafulmomin530@gmail.com", color: "hover:bg-red-500/20" }
+                    { icon: FaEnvelope, href: "mailto:ashrafulmomin2@gmail.com", color: "hover:bg-red-500/20" }
                   ].map((social, index) => (
                     <motion.a
                       key={index}

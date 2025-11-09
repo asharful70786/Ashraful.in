@@ -111,13 +111,10 @@ const Footer = () => {
                 <MdLocationOn className="mt-1 mr-3 text-emerald-400 text-xl" />
                 <span className="text-slate-300 font-light">Kolkata, India</span>
               </li>
-              <li className="flex items-center">
-                <MdPhone className="mr-3 text-cyan-400 text-xl" />
-                <a href="tel:+917076091389" className="text-slate-300 hover:text-cyan-400 font-light transition">+91 7076091389</a>
-              </li>
+             
               <li className="flex items-center">
                 <MdEmail className="mr-3 text-purple-400 text-xl" />
-                <a href="mailto:ashrafulmomin530@gmail.com" className="text-slate-300 hover:text-purple-400 font-light transition">ashrafulmomin530@gmail.com</a>
+                <a href="mailto:ashrafulmomin2@gmail.com" className="text-slate-300 hover:text-purple-400 font-light transition">ashrafulmomin2@gmail.com</a>
               </li>
             </ul>
           </motion.div>

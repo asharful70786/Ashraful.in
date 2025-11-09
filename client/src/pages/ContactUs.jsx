@@ -71,8 +71,8 @@ export default function ContactUs() {
   };
 
   const contactInfo = [
-    { icon: FiMail, label: 'Email', value: 'ashrafulmomin530@gmail.com', href: 'mailto:ashrafulmomin530@gmail.com' },
-    { icon: FiPhone, label: 'Phone', value: '+91 7076091389', href: 'tel:+8801234567890' },
+    { icon: FiMail, label: 'Email', value: 'ashrafulmomin2@gmail.com', href: 'mailto:ashrafulmomin2@gmail.com' },
+   
     { icon: FiMapPin, label: 'Location', value: 'Kolkata, India', href: '#' },
   ];
 
